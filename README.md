@@ -13,6 +13,18 @@
 - 파일 지문 (SHA-256): `3affc1d752772d041527295593c4f7c9cd4c86ee87200189ed97eeb55cb17d23`
 - 압축을 풀고 `설치하기.bat` 을 두 번 누르면 설치돼요.
 
+## 맥 (시험판)
+
+- 터미널에 아래 한 줄을 붙여넣으면 설치돼요.
+
+  ```
+  curl -fsSL https://raw.githubusercontent.com/teotbat-app/download/main/teotbat-mac.sh | bash
+  ```
+
+- 맥 종류에 따라 다르게 보일 수 있어요. 설치나 실행이 안 되면 운영자에게 알려 주세요.
+- 파일로 받기: `teotbat_mac_v4.54.zip`
+- 파일 지문 (SHA-256): `c51cc4cae2413c8b4a870dcc391e1ede3dae7017913a9b5e59e993f871f61e5b`
+
 ## 안드로이드 폰 — 이전 파일
 
 - `teotbat_v4.31.apk` — SHA-256 `7705f0bfa482e268b7065f5f22389a4f86e5a4c839dd343b43684fd7ebb87751`
