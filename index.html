@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="흩어진 내 주식을 한 화면에 모아 보고, 날마다 퀴즈로 투자 공부를 해요. 기능 소개와 쉬운 설치 안내.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="텃밭투자집사">
+<meta property="og:title" content="텃밭투자집사 · 기능과 설치 안내">
+<meta property="og:description" content="흩어진 내 주식을 한 화면에 모아 보고, 날마다 퀴즈로 투자 공부를 해요. 기능 소개와 쉬운 설치 안내.">
+<meta property="og:url" content="https://teotbat-app.github.io/download/">
+<meta property="og:image" content="https://teotbat-app.github.io/download/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#EEF4ED">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>텃밭투자집사</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500;700;800;900&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* 텃밭투자집사 안내 — Layout: 한 장 = 폰 한 화면. 가운데 한 줄 기둥(최대 560px)에 '장'이 차례로 쌓이고,
+   장마다 위에 '텃밭투자집사 · 몇 번째 장' 띠가 있어서 한 장만 캡처해 보내도 어디서 온 것인지 알 수 있음. 흙·잎 톤. */
+:root {
+  --paper: #EEF4ED;        /* 새싹 흰색 */
+  --card: #FFFFFF;
+  --ink: #102A1C;          /* 짙은 숲색 */
+  --ink-2: #3F5346;
+  --ink-3: #73857A;
+  --line: #D3E3D5;
+  --brand: #12864A;        /* 잎 초록 */
+  --brand-soft: #E0F2E6;
+  --warn-bg: #FFF3D2; --warn-fg: #6E4400;
+  --no-bg: #F3F5F3; --no-fg: #4D5B52;
+  --f-display: "Gothic A1", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --f-body: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --f-num: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --paper: #0A130D; --card: #121D16; --ink: #E8F3EA; --ink-2: #B7C9BC; --ink-3: #869A8B; --line: #24382B;
+  --brand: #55D18D; --brand-soft: #17311F; --warn-bg: #382B0A; --warn-fg: #FFD98A; --no-bg: #18241C; --no-fg: #A9BBAE; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --paper: #0A130D; --card: #121D16; --ink: #E8F3EA; --ink-2: #B7C9BC; --ink-3: #869A8B; --line: #24382B;
+  --brand: #55D18D; --brand-soft: #17311F; --warn-bg: #382B0A; --warn-fg: #FFD98A; --no-bg: #18241C; --no-fg: #A9BBAE; color-scheme: dark }
+
+* { box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font-family: var(--f-body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; word-break: keep-all; overflow-wrap: anywhere; }
+a { color: var(--brand); }
+.wrap { max-width: 560px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 16px 40px; display: grid; gap: 16px; }
+
+/* 장 */
+.sheet { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 16px 18px 20px; display: grid; gap: 14px; min-width: 0; scroll-margin-top: 12px; }
+.band { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-family: var(--f-num); font-size: 12px; letter-spacing: .03em; color: var(--ink-3); padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+.band b { color: var(--brand); font-weight: 600; font-family: var(--f-display); font-size: 13px; letter-spacing: -.01em; }
+.kick { font-family: var(--f-num); font-size: 12px; font-weight: 600; color: var(--brand); letter-spacing: .04em; }
+h1, h2, h3 { font-family: var(--f-display); letter-spacing: -.035em; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(34px, 10vw, 46px); font-weight: 900; line-height: 1.1; }
+h2 { font-size: clamp(24px, 6.8vw, 30px); font-weight: 800; line-height: 1.2; }
+h3 { font-size: 17px; font-weight: 800; letter-spacing: -.02em; }
+p { margin: 0; }
+.lead { font-size: 17px; color: var(--ink-2); }
+.note { font-size: 13.5px; color: var(--ink-3); line-height: 1.6; }
+.head { display: grid; gap: 6px; }
+
+/* 기능 목록: 이름(굵게) 바로 뒤에 한 줄 설명 */
+.items { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; }
+.items li { color: var(--ink-2); font-size: 15.5px; line-height: 1.55; padding-left: 14px; position: relative; }
+.items li::before { content: ""; position: absolute; left: 0; top: .62em; width: 6px; height: 6px; border-radius: 2px; background: var(--brand); }
+.items b { color: var(--ink); font-weight: 700; margin-right: 6px; }
+
+/* 표지 */
+.badges { display: flex; flex-wrap: wrap; gap: 6px; }
+.badge { font-size: 13px; font-weight: 600; padding: 5px 11px; border-radius: 999px; background: var(--paper); border: 1px solid var(--line); color: var(--ink-2); }
+.badge.hot { background: var(--brand); border-color: var(--brand); color: var(--card); }
+.cta { display: flex; flex-wrap: wrap; gap: 8px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; font-weight: 700; font-size: 16px; padding: 13px 18px; border-radius: 14px; border: 1.5px solid var(--ink); color: var(--ink); background: transparent; font-family: var(--f-body); cursor: pointer; }
+.btn.pri { background: var(--ink); color: var(--paper); }
+.btn.wide { width: 100%; }
+.btn small { font-weight: 500; font-size: 12px; opacity: .78; }
+.btn:focus-visible, .copybtn:focus-visible { outline: 3px solid var(--brand); outline-offset: 2px; }
+.shot { border-radius: 18px; overflow: hidden; border: 1px solid var(--line); background: var(--paper); aspect-ratio: 540 / 430; max-width: 100%; }
+.shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+
+/* 하는 일 · 하지 않는 일 */
+.two { display: grid; gap: 10px; }
+.box { border-radius: 16px; padding: 14px 16px; display: grid; gap: 8px; }
+.box.yes { background: var(--brand-soft); } .box.no { background: var(--no-bg); }
+.box h3 { font-size: 15px; } .box.yes h3 { color: var(--brand); } .box.no h3 { color: var(--no-fg); }
+.box ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: 15px; color: var(--ink-2); }
+
+/* 화면 미리 보기 */
+.gal { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.gal figure { margin: 0; display: grid; gap: 6px; min-width: 0; }
+.gal .ph { border-radius: 16px; overflow: hidden; border: 1px solid var(--line); background: var(--paper); aspect-ratio: 540 / 1169; }
+.gal img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+.gal figcaption { font-size: 13px; color: var(--ink-2); text-align: center; font-weight: 600; }
+
+/* 설치 순서 */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; counter-reset: s var(--from, 0); }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 38px 1fr; gap: 12px; align-items: start; }
+.steps li::before { content: counter(s); width: 38px; height: 38px; border-radius: 12px; background: var(--ink); color: var(--paper); display: grid; place-items: center; font-family: var(--f-num); font-weight: 600; font-size: 17px; }
+.steps b { display: block; font-size: 16.5px; font-family: var(--f-display); letter-spacing: -.02em; }
+.steps span { display: block; color: var(--ink-2); font-size: 15px; line-height: 1.6; margin-top: 2px; }
+.steps em { font-style: normal; font-weight: 700; color: var(--ink); background: var(--brand-soft); border-radius: 6px; padding: 0 5px; }
+.tip { background: var(--warn-bg); color: var(--warn-fg); border-radius: 14px; padding: 12px 14px; font-size: 14.5px; line-height: 1.6; }
+.tip b { font-weight: 700; }
+
+/* 운영자가 받는 정보 */
+.rows { display: grid; gap: 10px; }
+.row { border: 1px solid var(--line); border-radius: 16px; padding: 13px 15px; display: grid; gap: 6px; }
+.row h3 { font-size: 15.5px; }
+.row dl { margin: 0; display: grid; grid-template-columns: 62px 1fr; gap: 4px 10px; font-size: 14.5px; line-height: 1.55; }
+.row dt { color: var(--ink-3); font-weight: 600; } .row dd { margin: 0; color: var(--ink-2); min-width: 0; }
+.row dd b { color: var(--ink); }
+
+/* 받기 */
+.addr { display: flex; gap: 8px; align-items: center; min-width: 0; }
+.addr code { font-family: var(--f-num); font-size: 11.5px; color: var(--ink-2); background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; overflow-x: auto; white-space: nowrap; flex: 1; min-width: 0; }
+.copybtn { flex: none; font: inherit; font-size: 13px; font-weight: 700; border: 1px solid var(--line); background: var(--card); color: var(--ink-2); border-radius: 10px; padding: 8px 12px; cursor: pointer; }
+.lab { font-size: 12.5px; font-weight: 700; color: var(--ink-3); margin-bottom: -8px; }
+footer { color: var(--ink-3); font-size: 13px; display: grid; gap: 4px; padding: 6px 4px 0; }
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <!-- 1 표지 -->
+  <section class="sheet">
+    <div class="band"><b>텃밭투자집사</b><span>1 / 19</span></div>
+    <div class="head">
+      <h1>흩어진 내 주식,<br>한 텃밭에.</h1>
+      <p class="lead">여러 증권사에 나눠 가진 종목을 <b>직접 적어 넣으면</b> 한 화면에 모아 보여 줘요. 뉴스와 숫자는 AI가 쉬운 말로 정리하고, 날마다 퀴즈 세 문제로 투자 공부도 해요.</p>
+    </div>
+    <div class="badges"><span class="badge hot">애플폰(아이폰)은 안 돼요</span><span class="badge">안드로이드 폰 전용</span><span class="badge">신청하면 무료 이용권</span><span class="badge">실제 증권 계좌와 연결 안 됨</span></div>
+    <div class="cta"><a class="btn pri" href="#install">설치 방법 보기</a><a class="btn" href="#get">앱 받기</a><a class="btn" href="#info">운영자가 받는 정보</a></div>
+    <div class="shot"><img src="img/s1_home.jpg" alt="텃밭투자집사 홈 화면. 총자산과 평가손익, 하루 손익이 보여요." loading="eager"></div>
+    <p class="note">화면의 숫자는 예시예요. 투자 정보를 모아 정리하고 계산해 주는 도구예요. 종목을 찍어 주거나 사라, 팔라고 하지 않아요.</p>
+  </section>
+
+  <!-- 2 이런 앱이에요 -->
+  <section class="sheet">
+    <div class="band"><b>텃밭투자집사</b><span>2 / 19</span></div>
+    <h2>이런 앱이에요</h2>
+    <div class="two">
+      <div class="box yes"><h3>하는 일</h3><ul>
+        <li>내가 적은 종목을 모아서 총자산과 수익률 계산</li>
+        <li>뉴스와 시장 숫자를 한곳에 정리</li>
+        <li>AI가 오를 이유와 내릴 이유를 쉬운 말로 설명</li>
+        <li>포인트로 하는 모의투자 연습</li>
+        <li>날마다 투자 퀴즈 세 문제</li>
+      </ul></div>
+      <div class="box no"><h3>하지 않는 일</h3><ul>
+        <li>증권 계좌 연결, 주문, 이체</li>
+        <li>종목 추천, 사라·팔라는 말</li>
+        <li>수익 보장</li>
+        <li>유료 상담, 리딩방</li>
+        <li>공동인증서나 계좌 비밀번호 묻기</li>
+      </ul></div>
+    </div>
+    <p class="note">앱 속 ‘계좌’는 보기 편하게 나눠 둔 내 메모 칸이에요. 실제 증권 계좌와 이어지지 않아요.</p>
+  </section>
+
+  <!-- 3 기능 1 -->
+  <section class="sheet">
+    <div class="band"><b>텃밭투자집사</b><span>3 / 19</span></div>
+    <div class="head"><span class="kick">기능 1 / 8</span><h2>내 자산을 한 화면에</h2></div>
+    <ul class="items">
+      <li><b>계좌와 종목 적기</b>증권사별로 칸을 만들고 종목, 수량, 평균가를 적어요. 종목은 이름으로 찾아 넣어요.</li>
+      <li><b>총자산과 수익률</b>공개 시세를 받아 저절로 계산해요. 해외 주식은 원화로 바꿔 함께 보여요.</li>
+      <li><b>하루 손익 풀이</b>국내, 해외, 환율로 나눠서 왜 늘고 줄었는지 보여요.</li>
+      <li><b>달러 자산 비중</b>내 자산 가운데 달러 자산이 얼마인지 보여요.</li>
+      <li><b>종목 지도</b>칸 크기는 비중, 색은 오르내림이에요.</li>
+      <li><b>더 사기 · 팔기 기록</b>사고판 내용을 적으면 평균가를 다시 계산해요.</li>
+      <li><b>자산 기록</b>날짜별 총자산이 쌓여 그래프가 돼요.</li>
+      <li><b>가족 따로 보기</b>가족마다 계좌를 따로 적고 바꿔 가며 봐요.</li>
+      <li><b>금액 숨기기</b>밖에서 볼 때 금액을 흐리게 가려요.</li>
+    </ul>
+  </section>
+
+  <!-- 4 기능 2 -->
+  <section class="sheet">
+    <div class="band"><b>텃밭투자집사</b><span>4 / 19</span></div>
+    <div class="head"><span class="kick">기능 2 / 8</span><h2>AI 비서</h2></div>
+    <ul class="items">
+      <li><b>종목 분석</b>오를 이유와 내릴 이유를 나란히 보여 줘요.</li>
+      <li><b>차트 분석</b>추세와 지지·저항을 지표로 읽어 줘요.</li>
+      <li><b>계좌 점검</b>분산, 현금, 쏠림을 100점으로 점검해요.</li>
+      <li><b>장 브리핑</b>한국·미국 장이 열리기 전과 마감 뒤를 정리해요.</li>
+      <li><b>내 종목 뉴스 브리핑</b>12시간, 3일, 7일 뉴스가 내 종목에 주는 영향을 봐요.</li>
+      <li><b>시장 큰 흐름</b>시장 분위기와 요즘 돈이 몰리는 분야를 정리해요.</li>
+      <li><b>뉴스로 종목 찾기</b>뉴스와 테마에 자주 나온 종목을 모아 줘요.</li>
+      <li><b>AI 위원회 토론</b>관점이 다른 AI 8명이 묻고 반박하고, 의장이 쟁점과 먼저 보일 신호를 정리해요.</li>
+      <li><b>프랍 코치</b>내 계좌를 프랍 트레이더 규칙으로 점검해요.</li>
+      <li><b>AI에게 물어보기</b>무엇이든 대화로 물어봐요.</li>
+      <li><b>기록 보기</b>AI 추정이 맞았는지, 내가 남긴 판단이 1주·1달 뒤 어땠는지 봐요.</li>
+    </ul>
+    <p class="note">AI는 구글 Gemini 같은 무료 AI를 내가 직접 연결해서 써요. AI 답은 추정이라 틀릴 수 있어요.</p>
+  </section>
+
+  <!-- 5 기능 3 -->
+  <section class="sheet">
+    <div class="band"><b>텃밭투자집사</b><span>5 / 19</span></div>
+    <div class="head"><span class="kick">기능 3 / 8</span><h2>시장과 뉴스</h2></div>
+    <ul class="items">
+      <li><b>시장</b>지수, 환율, 공포·탐욕 지수, 경제 뉴스를 한 화면에서 봐요.</li>
+      <li><b>속보</b>최근 하루 속보를 카드로 보여 줘요. 누르면 원래 기사로 가요.</li>
+      <li><b>뉴스 묶어 읽기</b>같은 사건끼리 묶어서 상승 재료인지 하락 재료인지 표시해요.</li>
+      <li><b>오늘 급등락</b>크게 움직인 내 종목을 모으고, 뉴스와 공시에서 이유를 찾아요.</li>
+      <li><b>해외 뉴스 번역</b>영어 제목을 한국어로 바꿔 보여 줘요.</li>
+      <li><b>시세 전광판</b>홈 화면에 주요 시세가 흘러가요.</li>
+    </ul>
+    <p class="note">시세와 뉴스는 네이버, 야후, 구글 뉴스, 언론사 같은 공개된 곳에서 받아요. 15~20분 늦을 수 있어요.</p>
+  </section>
+
+  <!-- 6 기능 4 -->
+  <section class="sheet">
+    <div class="band"><b>텃밭투자집사</b><span>6 / 19</span></div>
+    <div class="head"><span class="kick">기능 4 / 8</span><h2>관심종목과 모의투자</h2></div>
+    <ul class="items">
+      <li><b>관심종목</b>안 가진 종목도 담아 두고 시세와 뉴스를 챙겨요.</li>
+      <li><b>AI 한눈 비교</b>관심종목끼리 근거를 나란히 견줘요.</li>
+      <li><b>포인트 모의투자</b>실제 시세로 사고파는 연습을 해요. 진짜 돈은 들지 않아요.</li>
+      <li><b>내 규칙</b>한 종목 비중, 나눠 사는 횟수, 남길 현금, 다시 보는 주기를 내가 정해요.</li>
+      <li><b>살 때</b>내 규칙대로 나눠 사고, 왜 사는지 한 줄 적어요. 사면 한 종목이 몇 %가 되는지 미리 보여 줘요.</li>
+      <li><b>급하게 오른 날</b>많이 오른 종목이면 “내일 다시 보기”를 먼저 권해요.</li>
+      <li><b>팔 때</b>살 때 적은 이유를 다시 보여 주고, 나눠 팔 수 있어요.</li>
+      <li><b>다시 볼 때 알림</b>정한 날이 되면 산 이유가 그대로인지 물어봐요.</li>
+      <li><b>거래 기록과 내 성적</b>사고판 기록과 이유를 돌아봐요.</li>
+    </ul>
+    <p class="note">앱은 사라, 팔라고 하지 않아요. 내가 정한 규칙과 견줘 보여 주기만 해요.</p>
+  </section>
+
+  <!-- 7 기능 5 -->
+  <section class="sheet">
+    <div class="band"><b>텃밭투자집사</b><span>7 / 19</span></div>
+    <div class="head"><span class="kick">기능 5 / 8</span><h2>투자 퀴즈와 담쌤의 가르침</h2></div>
+    <ul class="items">
+      <li><b>하루 3문제</b>네 개 가운데 하나를 골라요. 맞히면 포인트를 받고, 틀려도 잃지 않아요.</li>
+      <li><b>다섯 단계</b>진짜 초보, 초보, 일반, 전문가 수준, 실무·자격시험 수준 가운데 내가 골라요.</li>
+      <li><b>바로 해설</b>답을 고르면 왜 그런지 바로 알려 줘요. AI에게 더 쉽게 물어볼 수도 있어요.</li>
+      <li><b>담쌤의 가르침 열 가지</b>내 삶에 맞게, 여윳돈으로만, 모르는 것은 사지 않기, 나눠 담기, 나눠서 사고팔기, 가격과 가치 구분, 길게 보기, 남과 비교하지 않기, 감정으로 사고팔지 않기, 보장된 수익은 없다.</li>
+      <li><b>출석 체크</b>하루 한 번 누르면 포인트를 받아요.</li>
+      <li><b>로또 추첨기</b>재미로 번호를 뽑아 봐요. 실제 로또와 관계없어요.</li>
+    </ul>
+    <p class="note">포인트는 모의투자 연습에만 써요. 현금이나 상품으로 바꿀 수 없어요.</p>
+  </section>
+
+  <!-- 8 기능 6 -->
+  <section class="sheet">
+    <div class="band"><b>텃밭투자집사</b><span>8 / 19</span></div>
+    <div class="head"><span class="kick">기능 6 / 8</span><h2>퀀트 랩과 계산기</h2></div>
+    <ul class="items">
+      <li><b>퀀트 랩 · 시장</b>실제 일봉 자료로 시장 국면과 섹터 강도를 계산해요.</li>
+      <li><b>퀀트 랩 · 내 종목</b>내 종목이 전략 조건에 맞는지 상태를 보여 줘요.</li>
+      <li><b>퀀트 랩 · 조건 검색</b>조건에 맞는 종목을 찾아요.</li>
+      <li><b>퀀트 랩 · 백테스트</b>전략이 과거에 어땠는지 검증해요.</li>
+      <li><b>수익률 계산기</b>내 가격, 지금 가격, 수량을 넣으면 수익률과 수익금이 나와요.</li>
+      <li><b>불타기 · 물타기 계산기</b>더 사면 평균가와 본전 가격이 어떻게 바뀌는지 계산해요.</li>
+      <li><b>프랍 리스크 계산기</b>한 번에 걸 위험을 정하면 살 수 있는 수량이 나와요.</li>
+    </ul>
+    <p class="note">계산하지 못한 값은 ‘데이터 없음’으로 보여 줘요. 가짜 숫자를 채우지 않아요.</p>
+  </section>
+
+  <!-- 9 기능 7 -->
+  <section class="sheet">
+    <div class="band"><b>텃밭투자집사</b><span>9 / 19</span></div>
+    <div class="head"><span class="kick">기능 7 / 8</span><h2>임시 텃밭 게시판</h2></div>
+    <ul class="items">
+      <li><b>로그인 없이 글쓰기</b>별명은 내가 정해요. 뒤에 폰마다 다른 번호가 붙어요.</li>
+      <li><b>글 · 공감 · 신고</b>글을 쓰고, 공감하고, 문제 글은 신고해요. 댓글은 없어요.</li>
+      <li><b>저절로 가려짐</b>신고가 2번 모이면 그 글은 저절로 가려져요.</li>
+      <li><b>올라가지 않는 글</b>연락처, 링크, 종목을 찍어 주는 글, 리딩방 홍보는 올라가지 않아요.</li>
+      <li><b>내 글 지우기</b>내가 쓴 글은 앱에서 바로 지울 수 있어요.</li>
+    </ul>
+    <div class="tip"><b>운영자는 게시판에서도 1:1로 연락하지 않아요.</b> 따로 연락하자거나 종목을 찍어 주는 사람은 사기예요.</div>
+  </section>
+
+  <!-- 10 기능 8 -->
+  <section class="sheet">
+    <div class="band"><b>텃밭투자집사</b><span>10 / 19</span></div>
+    <div class="head"><span class="kick">기능 8 / 8</span><h2>내게 맞추기와 관리</h2></div>
+    <ul class="items">
+      <li><b>쉬운 AI 켜기 도우미</b>큰 글씨로 한 단계씩 안내해요. 가족에게 부탁하는 메시지도 만들어 줘요.</li>
+      <li><b>투자자 정보 · 투자 성향 · 관심 섹터</b>내 상황을 적어 두면 AI가 거기에 맞춰 설명해요.</li>
+      <li><b>투자 DNA</b>무엇을 중요하게 보는지 직접 조절해요.</li>
+      <li><b>내 AI 캐릭터</b>AI의 말투와 비유를 골라요.</li>
+      <li><b>화면</b>밝은·어두운 화면, 글자 크기, 오를 때 색, 배경음을 바꿔요.</li>
+      <li><b>데이터 백업</b>폰 안에 저절로 14일치를 보관하고, 백업 파일을 받아 둘 수 있어요.</li>
+      <li><b>자동 업데이트</b>앱을 켜면 새 기능을 받아서 적용해요. 다시 설치하지 않아도 돼요.</li>
+      <li><b>이용권</b>쿠폰 번호를 넣으면 기간만큼 쓸 수 있어요. 남은 기간을 설정에서 봐요.</li>
+    </ul>
+  </section>
+
+  <!-- 11 화면 미리 보기 1 -->
+  <section class="sheet">
+    <div class="band"><b>텃밭투자집사</b><span>11 / 19</span></div>
+    <h2>화면 미리 보기</h2>
+    <div class="gal">
+      <figure><div class="ph"><img src="img/s1_home.jpg" alt="홈 화면" loading="lazy"></div><figcaption>홈</figcaption></figure>
+      <figure><div class="ph"><img src="img/s2_ai.jpg" alt="AI 종목 분석 화면" loading="lazy"></div><figcaption>AI 종목 분석</figcaption></figure>
+      <figure><div class="ph"><img src="img/n1_quiz.jpg" alt="투자 퀴즈 화면. 네 개 가운데 하나를 골라요." loading="lazy"></div><figcaption>투자 퀴즈</figcaption></figure>
+      <figure><div class="ph"><img src="img/n2_level.jpg" alt="퀴즈 단계 고르기 화면. 다섯 단계가 있어요." loading="lazy"></div><figcaption>퀴즈 단계 고르기</figcaption></figure>
+    </div>
+    <p class="note">모두 예시 화면이고 숫자는 예시 데이터예요.</p>
+  </section>
+
+  <!-- 12 화면 미리 보기 2 -->
+  <section class="sheet">
+    <div class="band"><b>텃밭투자집사</b><span>12 / 19</span></div>
+    <h2>화면 미리 보기 · 모의투자</h2>
+    <div class="gal">
+      <figure><div class="ph"><img src="img/n4_buy.jpg" alt="모의투자 살 때 화면. 나눠 사기와 사는 이유 적기가 보여요." loading="lazy"></div><figcaption>살 때</figcaption></figure>
+      <figure><div class="ph"><img src="img/n6_sell.jpg" alt="모의투자 팔 때 화면. 살 때 적은 이유를 다시 보여 줘요." loading="lazy"></div><figcaption>팔 때</figcaption></figure>
+      <figure><div class="ph"><img src="img/n5_myrules.jpg" alt="내 규칙 카드. 지키는 중인지 보여 줘요." loading="lazy"></div><figcaption>내 규칙</figcaption></figure>
+      <figure><div class="ph"><img src="img/n3_rules10.jpg" alt="담쌤의 가르침 열 가지 화면" loading="lazy"></div><figcaption>담쌤의 가르침</figcaption></figure>
+    </div>
+    <p class="note">‘한빛전자’는 화면을 보여 주려고 만든 가짜 이름이에요.</p>
+  </section>
+
+  <!-- 13 설치 1 -->
+  <section class="sheet" id="install">
+    <div class="band"><b>텃밭투자집사</b><span>13 / 19</span></div>
+    <div class="head"><span class="kick">설치 안내 1 / 2</span><h2>받아서 설치하기</h2></div>
+    <p class="note">안드로이드 폰(갤럭시 등)에서만 돼요. 애플폰(아이폰)은 안 돼요. 파일이 38MB라 와이파이에서 받는 게 좋아요.</p>
+    <ol class="steps">
+      <li><div><b>받기</b><span>이 페이지 맨 아래의 <em>텃밭투자집사 받기</em>를 눌러요. “다운로드할까요?”라고 물으면 <em>다운로드</em>를 눌러요. 카카오톡 안에서 열었는데 받아지지 않으면, 화면 오른쪽 위의 점 세 개를 눌러 <em>다른 브라우저로 열기</em>를 골라 주세요.</span></div></li>
+      <li><div><b>파일 열기</b><span>다 받으면 화면 맨 위를 아래로 쓸어내려요. “다운로드 완료” 알림을 누르면 파일이 열려요.</span></div></li>
+      <li><div><b>허용하기</b><span>“출처를 알 수 없는 앱”이라는 말이 나오면 <em>설정</em>을 누르고 <em>이 출처 허용</em>을 켠 뒤 뒤로 돌아와요. Play 스토어 밖에서 받은 앱이라 한 번 묻는 거예요.</span></div></li>
+      <li><div><b>설치</b><span><em>설치</em>를 눌러요. 끝나면 <em>열기</em>를 눌러요.</span></div></li>
+    </ol>
+    <div class="tip"><b>“확인되지 않은 앱”이라는 안내가 뜰 수 있어요.</b> 구글 Play 프로텍트가 Play 스토어에 없는 앱에 보여 주는 안내예요. 이 페이지에서 받은 파일이 맞으면 <b>세부정보 더보기</b>를 누른 다음 <b>무시하고 설치</b>를 눌러요. 내키지 않으면 설치하지 않아도 괜찮아요.</div>
+  </section>
+
+  <!-- 14 설치 2 -->
+  <section class="sheet">
+    <div class="band"><b>텃밭투자집사</b><span>14 / 19</span></div>
+    <div class="head"><span class="kick">설치 안내 2 / 2</span><h2>처음 켜고 이용권 받기</h2></div>
+    <ol class="steps" style="--from: 4">
+      <li><div><b>기다리기</b><span>처음 켜면 “새 버전 받는 중”이 잠깐 나와요. 끝날 때까지 기다려요. 1분쯤 걸려요.</span></div></li>
+      <li><div><b>약관 동의</b><span>이용약관, 투자 위험 고지, 개인정보 처리방침을 읽고 동의해요.</span></div></li>
+      <li><div><b>이용권 신청</b><span><em>이용권 신청</em> 화면에 닉네임을 적어 보내요. 전화번호나 이메일은 적지 않아요.</span></div></li>
+      <li><div><b>오픈채팅에 닉네임 알리기</b><span>운영자 오픈채팅에 들어와서 방금 적은 닉네임을 알려 주세요. 확인한 뒤 그 채팅으로 쿠폰 번호를 보내 드려요. 하루 이틀 걸릴 수 있어요.</span></div></li>
+      <li><div><b>쿠폰 넣기</b><span>받은 쿠폰 번호를 같은 화면 아래 칸에 넣으면 앱이 열려요.</span></div></li>
+      <li><div><b>시작</b><span>계좌를 만들고 종목을 적어요. AI는 <em>쉬운 도우미로 켜기</em>를 누르면 한 단계씩 안내해요. AI 없이도 자산 보기, 관심종목, 모의투자, 퀴즈는 쓸 수 있어요.</span></div></li>
+    </ol>
+    <div class="tip"><b>버전 확인.</b> 더보기 → 설정 → 고급 → 앱 정보에서 버전이 <b>4.54 이상</b>인지 봐 주세요. 더 낮으면 뒤로가기로 앱을 닫았다가 다시 켜 보세요. 그래도 낮으면 오픈채팅으로 알려 주세요.</div>
+    <a class="btn wide" href="https://open.kakao.com/o/srbj9ZWi" rel="noopener">운영자 오픈채팅 열기 <small>카카오톡</small></a>
+  </section>
+
+  <!-- 15 운영자가 받는 정보 -->
+  <section class="sheet" id="info">
+    <div class="band"><b>텃밭투자집사</b><span>15 / 19</span></div>
+    <div class="head"><span class="kick">정보 고지 1 / 2</span><h2>운영자가 받는 정보는 이게 전부예요</h2></div>
+    <div class="rows">
+      <div class="row"><h3>앱을 켤 때 <span class="note">6시간에 한 번</span></h3><dl>
+        <dt>받는 것</dt><dd><b>기기 코드, 앱 이름과 버전, 쿠폰을 등록했는지, 접속한 시각</b></dd>
+        <dt>쓰는 곳</dt><dd>사용자 수와 정원 확인</dd></dl></div>
+      <div class="row"><h3>쿠폰을 등록할 때</h3><dl>
+        <dt>받는 것</dt><dd><b>쿠폰 번호, 기기 코드</b></dd>
+        <dt>쓰는 곳</dt><dd>쿠폰 하나를 폰 한 대에서만 쓰는지, 기간이 남았는지 확인</dd></dl></div>
+      <div class="row"><h3>이용권을 신청할 때</h3><dl>
+        <dt>받는 것</dt><dd><b>닉네임, 남긴 말, 기기 코드, 앱 이름과 버전</b></dd>
+        <dt>쓰는 곳</dt><dd>쿠폰을 보내는 데만 써요. 신청한 날부터 30일 안에 지워요.</dd></dl></div>
+      <div class="row"><h3>게시판에 글을 쓰거나 공감·신고를 누를 때</h3><dl>
+        <dt>받는 것</dt><dd><b>쓴 글, 말머리, 별명, 기기 코드, 시각</b></dd>
+        <dt>쓰는 곳</dt><dd>게시판 운영. 다른 사용자에게는 별명만 보여요.</dd></dl></div>
+    </div>
+    <p class="note"><b>기기 코드</b>는 폰의 고유값을 암호로 바꾼 20자리 글자예요. 이것만으로는 누구인지 알 수 없어요.<br>받은 정보는 운영자의 구글 시트에 저장해요. 광고나 판매에 쓰지 않고 남에게 주지 않아요. 지워 달라고 하면 지워요. 설정 → 이용권에 보이는 ‘이 기기 코드’를 오픈채팅으로 알려 주세요.<br>운영자가 앱에서 투표를 열면, 투표한 분의 기기 코드와 고른 번호를 받아요. 지금은 열린 투표가 없어요.</p>
+  </section>
+
+  <!-- 16 받지 않는 것 · 다른 곳으로 가는 것 -->
+  <section class="sheet">
+    <div class="band"><b>텃밭투자집사</b><span>16 / 19</span></div>
+    <div class="head"><span class="kick">정보 고지 2 / 2</span><h2>받지 않는 것, 다른 곳으로 가는 것</h2></div>
+    <div class="two">
+      <div class="box yes"><h3>운영자가 받지 않아요 · 내 폰에만 있어요</h3><ul>
+        <li>이름, 전화번호, 이메일, 주소</li>
+        <li>계좌번호, 공동인증서, 비밀번호</li>
+        <li>내가 적은 계좌, 보유 종목, 수량, 금액</li>
+        <li>관심종목, 투자자 설문, 투자 DNA</li>
+        <li>포인트, 퀴즈와 모의투자 기록</li>
+        <li>AI 열쇠(키), AI와 나눈 대화</li>
+        <li>위치, 연락처, 사진, 문자</li>
+      </ul></div>
+      <div class="box no"><h3>운영자 말고 다른 곳으로 가요</h3><ul>
+        <li><b>내가 연결한 AI 회사(예: 구글)</b> AI 기능을 쓸 때 질문과 함께 계좌 요약(종목 이름, 수량, 수익률, 비중), 설문·투자 DNA 요약, 관심 섹터가 가요. 계좌번호, 실명, 연락처는 가지 않아요. 무료 AI는 보낸 내용을 그 회사가 AI를 고치는 데 쓸 수 있어요.</li>
+        <li><b>시세·뉴스 사이트(네이버, 야후, 구글 뉴스, 언론사)</b> 시세와 뉴스를 받을 때 종목 코드와 이름이 가요.</li>
+        <li><b>깃허브</b> 업데이트 파일과 퀴즈 문제를 내려받아요. 내 정보를 실어 보내지 않아요.</li>
+        <li><b>카카오</b> 내가 오픈채팅에 들어가 나눈 대화는 카카오의 방침을 따라요.</li>
+      </ul></div>
+    </div>
+    <p class="note">어느 사이트든 접속하면 접속 주소(IP) 같은 일반적인 접속 기록은 그 사이트에 남을 수 있어요. AI를 켜지 않으면 AI 회사로는 아무것도 가지 않아요.</p>
+  </section>
+
+  <!-- 17 보안 고지 -->
+  <section class="sheet">
+    <div class="band"><b>텃밭투자집사</b><span>17 / 19</span></div>
+    <div class="head"><span class="kick">보안 고지</span><h2>설치 전에 알아 두세요</h2></div>
+    <ul class="items">
+      <li><b>Play 스토어에 없는 앱이에요.</b>이 페이지의 버튼으로만 받으세요. 카톡이나 다른 곳에서 도는 파일은 바뀐 파일일 수 있어요.</li>
+      <li><b>권한은 ‘인터넷’ 하나만 써요.</b>연락처, 사진, 위치, 문자, 마이크, 카메라 권한을 요구하지 않아요. 요구한다면 다른 앱이에요.</li>
+      <li><b>자동으로 업데이트돼요.</b>앱을 켜면 새 화면과 기능을 내려받아 적용해요. 운영자의 전자서명이 맞는 파일만 적용돼요.</li>
+      <li><b>AI 켜기 도우미와 복사한 글.</b>도우미는 내가 복사해 둔 글에서 구글 AI 열쇠 모양만 찾아요. 다른 내용은 저장하거나 보내지 않아요.</li>
+      <li><b>앱에 따로 잠금이 없어요.</b>폰을 연 사람은 내 자산 화면을 볼 수 있어요. 폰 화면 잠금을 쓰세요.</li>
+      <li><b>내 정보는 폰에만 있어요.</b>앱을 지우거나 폰을 바꾸면 사라져요. 설정 → 데이터 백업에서 백업 파일을 받아 두세요. 백업 파일에는 내 자산 정보가 들어 있으니 남에게 주지 마세요.</li>
+    </ul>
+  </section>
+
+  <!-- 18 꼭 알아 두세요 -->
+  <section class="sheet">
+    <div class="band"><b>텃밭투자집사</b><span>18 / 19</span></div>
+    <div class="head"><span class="kick">꼭 알아 두세요</span><h2>사칭과 투자에 대해</h2></div>
+    <div class="tip"><b>운영자는 먼저 1:1로 연락하지 않아요.</b> 돈, 계좌번호, 비밀번호, 신분증을 묻지 않아요. 종목을 찍어 주지 않고, 유료 상담이나 리딩방을 하지 않아요. 운영자나 이 앱의 이름으로 그런 연락이 오면 사기예요.</div>
+    <ul class="items">
+      <li><b>투자 권유가 아니에요.</b>투자 정보를 모아 정리하고 계산해 주는 도구예요. 투자자문, 투자일임, 유사투자자문업이 아니에요.</li>
+      <li><b>AI 답은 추정이에요.</b>틀릴 수 있고, 지난 결과가 앞날을 보장하지 않아요.</li>
+      <li><b>판단과 책임은 본인에게 있어요.</b>손실이 나도 마찬가지예요.</li>
+      <li><b>시세는 늦을 수 있어요.</b>15~20분 늦게 보일 수 있어요.</li>
+      <li><b>포인트와 모의투자는 연습이에요.</b>현금이나 상품으로 바꿀 수 없어요.</li>
+      <li><b>개인이 만든 앱이에요.</b>증권사나 금융회사가 만들거나 보증한 앱이 아니에요.</li>
+      <li><b>‘담쌤의 가르침’</b>운영자가 배운 투자 원칙을 열 가지로 정리한 글이에요.</li>
+    </ul>
+  </section>
+
+  <!-- 19 받기 -->
+  <section class="sheet" id="get">
+    <div class="band"><b>텃밭투자집사</b><span>19 / 19</span></div>
+    <div class="head"><span class="kick">받기</span><h2>여기에서 받으세요</h2></div>
+    <a class="btn pri wide" href="https://github.com/teotbat-app/download/raw/main/teotbat_v4.32.apk" rel="noopener">텃밭투자집사 받기 <small>안드로이드 · 38MB</small></a>
+    <p class="lab">받는 주소</p>
+    <div class="addr"><code id="a1">https://github.com/teotbat-app/download/raw/main/teotbat_v4.32.apk</code><button class="copybtn" data-copy="a1" type="button">복사</button></div>
+    <p class="note">공식 받기는 위 주소 하나뿐이에요. 설치한 뒤에는 앱이 스스로 최신 버전으로 올라가요.</p>
+    <a class="btn wide" href="https://open.kakao.com/o/srbj9ZWi" rel="noopener">이용권 신청은 운영자 오픈채팅으로 <small>카카오톡</small></a>
+    <p class="note">신청한 분께 운영자가 직접 쿠폰 번호를 보내 드려요. 애플폰(아이폰)에서는 설치할 수 없어요.</p>
+  </section>
+
+  <footer>
+    <p>텃밭투자집사 · 투자 정보를 모아 정리하고 계산해 주는 도구</p>
+    <p>자세한 내용은 앱 안의 설정 → 약관·고지에서 이용약관, 투자 위험 고지, 개인정보 처리방침으로 볼 수 있어요.</p>
+  </footer>
+</main>
+
+<script>
+(function () {
+  document.querySelectorAll('[data-copy]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var el = document.getElementById(b.getAttribute('data-copy')); var v = el.textContent.trim();
+      var done = function () { b.textContent = '복사됨'; setTimeout(function () { b.textContent = '복사'; }, 1600); };
+      try { navigator.clipboard.writeText(v).then(done, function () { sel(el); }); } catch (e) { sel(el); }
+    });
+  });
+  function sel(el) { var r = document.createRange(); r.selectNodeContents(el); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); }
+})();
+</script>
+</body>
+</html>
