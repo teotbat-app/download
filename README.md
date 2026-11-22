@@ -9,8 +9,8 @@
 
 ## 윈도우 PC
 
-- 파일: `teotbat_pc_v4.54.zip`
-- 파일 지문 (SHA-256): `3affc1d752772d041527295593c4f7c9cd4c86ee87200189ed97eeb55cb17d23`
+- 파일: `teotbat_pc_v4.56.zip`
+- 파일 지문 (SHA-256): `0cd13a57cde63964d9e8b5ccd58a1e6b8a048b9e05ec5d5b25f119b0b868ae23`
 - 압축을 풀고 `설치하기.bat` 을 두 번 누르면 설치돼요.
 
 ## 맥 (시험판)
