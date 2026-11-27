@@ -1,0 +1,88 @@
+{
+  "version": "1.8",
+  "latest": 108,
+  "enabled": true,
+  "require": false,
+  "apk": "https://github.com/teotbat-app/download/raw/main/teotbat_v4.32.apk",
+  "notice": "",
+  "grace_days": 7,
+  "pc": "https://github.com/teotbat-app/download/raw/main/teotbat_pc_v4.64.zip",
+  "ota": {
+    "code": 464,
+    "version": "4.64",
+    "min_app": 106,
+    "url": "https://raw.githubusercontent.com/teotbat-app/download/main/ota/bundle-464.zip",
+    "sha256": "c78cda3a5dd2a831280d78020bdfb57bc6598b4711c24e56abd799d1904b7dd9",
+    "sig": "0379632d1ca044041a0c74c5e3a4f69a7cd9f709db615024d95984428391807705d4405d036eb70965c5d3ac357164a9de5c78581928da52ebd30a14e066610d",
+    "note": "안정성을 다듬었어요"
+  },
+  "support": {
+    "toss": "",
+    "kakao": "",
+    "charity": {
+      "url": "https://www.chorogusan.or.kr/contents/greenList.do?categoryCd=15&pageNo=1#reportReview",
+      "name": "초록우산 천원의 힘"
+    }
+  },
+  "promo": [],
+  "license": {
+    "required": true,
+    "contact": "https://open.kakao.com/o/srbj9ZWi",
+    "contact_label": "운영자 1:1 오픈채팅 열기",
+    "notice": "이용권은 운영자에게 문의해 주세요.",
+    "plans": [
+      {
+        "name": "무료 체험",
+        "days": 7,
+        "price": "무료"
+      },
+      {
+        "name": "1개월",
+        "days": 30,
+        "price": "문의"
+      },
+      {
+        "name": "3개월",
+        "days": 90,
+        "price": "문의"
+      },
+      {
+        "name": "6개월",
+        "days": 180,
+        "price": "문의"
+      }
+    ],
+    "api": "https://script.google.com/macros/s/AKfycbwhfs2NWGqRT9hSx6PwPVwQQYHgMCEihWPXYad4HLawj_J2avG7UEU0hyzBG24QiHKWqQ/exec",
+    "free_until": "2026-12-12",
+    "bonus": [
+      {
+        "days": 14,
+        "before": "2026-10-30",
+        "id": "open-2w-2026-10"
+      },
+      {
+        "days": 30,
+        "before": "2026-11-05",
+        "id": "ext-1m-2026-11"
+      }
+    ]
+  },
+  "features": [
+    "dna",
+    "brief",
+    "paper",
+    "discpaper",
+    "scan2",
+    "board",
+    "rules"
+  ],
+  "tb": {
+    "version": "1.8",
+    "latest": 108,
+    "apk": "https://github.com/teotbat-app/download/raw/main/teotbat_v4.32.apk",
+    "notice": "",
+    "require": false,
+    "contact": "https://open.kakao.com/o/srbj9ZWi",
+    "contact_label": "운영자 1:1 오픈채팅 열기"
+  }
+}
