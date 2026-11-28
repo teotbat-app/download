@@ -6,15 +6,15 @@
   "apk": "https://github.com/teotbat-app/download/raw/main/teotbat_v4.32.apk",
   "notice": "",
   "grace_days": 7,
-  "pc": "https://github.com/teotbat-app/download/raw/main/teotbat_pc_v4.64.zip",
+  "pc": "https://github.com/teotbat-app/download/raw/main/teotbat_pc_v4.65.zip",
   "ota": {
-    "code": 464,
-    "version": "4.64",
+    "code": 465,
+    "version": "4.65",
     "min_app": 106,
-    "url": "https://raw.githubusercontent.com/teotbat-app/download/main/ota/bundle-464.zip",
-    "sha256": "c78cda3a5dd2a831280d78020bdfb57bc6598b4711c24e56abd799d1904b7dd9",
-    "sig": "0379632d1ca044041a0c74c5e3a4f69a7cd9f709db615024d95984428391807705d4405d036eb70965c5d3ac357164a9de5c78581928da52ebd30a14e066610d",
-    "note": "안정성을 다듬었어요"
+    "url": "https://raw.githubusercontent.com/teotbat-app/download/main/ota/bundle-465.zip",
+    "sha256": "e5e731ccdaeb4ea246458915db01471f642dfa8e53fb14e7f566752df9863899",
+    "sig": "92975f3adbfca58fdfd30f8e24a12bffe384cca4777e08c967b955300343c481b951879ab18dc2476a1a9c89deac45873a0495335c4f0e426febdbc66c97e705",
+    "note": "내 계좌에 평가비중·매입비중 정렬이 생겼고, 켜 둔 채로도 새 버전을 받아요"
   },
   "support": {
     "toss": "",

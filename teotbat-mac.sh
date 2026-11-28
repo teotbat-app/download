@@ -2,7 +2,7 @@
 # 텃밭투자집사 — 맥 설치 (터미널에 한 줄 붙여넣기용)
 #   curl -fsSL https://raw.githubusercontent.com/teotbat-app/download/main/teotbat-mac.sh | bash
 main() {
-    ZIP_URL="https://github.com/teotbat-app/download/raw/main/teotbat_mac_v4.64.zip"
+    ZIP_URL="https://github.com/teotbat-app/download/raw/main/teotbat_mac_v4.65.zip"
     if [ "$(uname -s)" != "Darwin" ] && [ -z "${ASSET_INSTALL_BASE:-}" ]; then
         echo "  이 설치 방법은 맥(macOS)에서만 쓸 수 있어요."
         exit 1
