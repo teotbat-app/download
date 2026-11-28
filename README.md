@@ -9,8 +9,8 @@
 
 ## 윈도우 PC
 
-- 파일: `teotbat_pc_v4.65.zip`
-- 파일 지문 (SHA-256): `491ada5873d7b3dbc967857f8907e9a433fe9f0445f16d526ed0d4b8e6870e28`
+- 파일: `teotbat_pc_v4.66.zip`
+- 파일 지문 (SHA-256): `1f85868bd61720ff0e2377beeddca0c324c8984bd3b2ee7124125709b90fefe0`
 - 압축을 풀고 `설치하기.bat` 을 두 번 누르면 설치돼요.
 
 ## 맥 (시험판)
@@ -22,8 +22,8 @@
   ```
 
 - 맥 종류에 따라 다르게 보일 수 있어요. 설치나 실행이 안 되면 운영자에게 알려 주세요.
-- 파일로 받기: `teotbat_mac_v4.65.zip`
-- 파일 지문 (SHA-256): `a5adc4fb66c3d5626f642f4d5b6e82ab838c659eee236bff93607fdda49d7e91`
+- 파일로 받기: `teotbat_mac_v4.66.zip`
+- 파일 지문 (SHA-256): `72a055434ba796aa64fa923e5806751125c33e6da442a03ff3bdcd3dc81bf2ce`
 
 ## 안드로이드 폰 — 이전 파일
 
